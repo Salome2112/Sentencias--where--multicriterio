@@ -1,0 +1,2 @@
+#  Sentencias -where -multicriterio
+ 
