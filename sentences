@@ -1,0 +1,107 @@
+##Sentencias--where--multicriterio
+###Creacion de la tabla 
+```
+CREATE TABLE IF NOT EXISTS client (
+    id SERIAL,
+    nui VARCHAR(20),
+    fullname VARCHAR(100),
+    phone VARCHAR(20),
+    type_of_client VARCHAR(50),
+    city VARCHAR(100),
+    credit_limit DECIMAL(10, 2)
+);
+```
+```
+CREATE TABLE IF NOT EXISTS product (
+    id SERIAL,
+    description VARCHAR(255),
+    price DECIMAL(10, 2),
+    category VARCHAR(50),
+    country_of_origin VARCHAR(100),
+    year_of_production INT
+);
+```
+###Insercion de los datos
+```
+INSERT INTO client (nui, fullname, phone, type_of_client, city, credit_limit) VALUES
+('A123456789', 'Juan Perez', '555-1234', 'Retail', 'Lima', 5000.00),
+('B987654321', 'Maria Lopez', '555-5678', 'Wholesale', 'Cusco', 15000.00),
+('C456789123', 'Carlos Sanchez', '555-9101', 'Retail', 'Arequipa', 7000.00),
+('D789123456', 'Ana Martinez', '555-1122', 'Retail', 'Trujillo', 8000.00),
+('E321654987', 'Luis Rodriguez', '555-3344', 'Wholesale', 'Chiclayo', 20000.00);
+```
+```
+INSERT INTO product (description, price, category, country_of_origin, year_of_production) VALUES
+('Laptop HP Pavilion', 1200.00, 'Electronics', 'USA', 2023),
+('Smartphone Samsung Galaxy S21', 950.00, 'Electronics', 'South Korea', 2021),
+('Café Premium', 15.50, 'Beverages', 'Colombia', 2022),
+('Bicicleta de Montaña', 800.00, 'Sports', 'China', 2020),
+('Televisor LG OLED', 2200.00, 'Electronics', 'South Korea', 2023);
+```
+###Contar el número de productos de una categoría específica
+```
+SELECT COUNT(*) AS numero_de_productos
+FROM product
+WHERE category = 'Electronics';
+```
+###Mostrar capturas 
+
+
+###Contar el número de clientes en una ciudad específica
+```
+SELECT COUNT(*) AS numero_de_clientes
+FROM client
+WHERE city = 'Lima';
+```
+###Mostrar capturas 
+
+###Contar el número de productos cuyo precio está dentro de un rango específico
+```
+SELECT COUNT(*) AS numero_de_productos
+FROM product
+WHERE price BETWEEN 500.00 AND 1500.00;
+```
+### Mostrar capturas 
+
+
+###Seleccionar clientes que viven en una ciudad específica y tienen un tipo de cliente específico
+```
+SELECT *
+FROM client
+WHERE city = 'Lima' AND type_of_client = 'Retail';
+```
+###Mostrar capturas
+
+###Seleccionar productos que pertenecen a una categoría específica y cuyo precio está por encima de un valor específico
+```
+SELECT *
+FROM product
+WHERE category = 'Electronics' AND price > 1000.00;
+```
+### Mostrar capturas 
+
+###Seleccionar productos que fueron producidos en un año específico y en un país de origen específico
+```
+SELECT *
+FROM product
+WHERE year_of_production = 2023 AND country_of_origin = 'USA';
+
+```
+### Mostrar capturas
+
+###Seleccionar clientes cuyo nombre completo comience con 'J'
+```
+SELECT *
+FROM client
+WHERE fullname LIKE 'J%';
+```
+### Mostrar capturas 
+
+###Seleccionar clientes cuya ciudad contenga la letra 'a'
+```
+SELECT *
+FROM client
+WHERE city LIKE '%a%';
+```
+### Mostrar capturas 
+
